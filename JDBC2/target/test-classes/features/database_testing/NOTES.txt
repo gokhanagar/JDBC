@@ -1,0 +1,39 @@
+JDBC:
+1. Our database is PostGreSQL so add postgresql dependency
+<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <version>42.4.0</version>
+</dependency>
+
+
+2. In Utilities, Create DBUtils class and  Add JDBC Util Class in there
+
+3. Create a folder: database_testing. And create a FF: jdbc_read.feature
+
+4. Write the feature file to read database data
+    Given user connects to the database // Connect to the database
+    And user gets the "*" from "tp_customer" table //go to customer table
+    And user reads all of the "ssn" column data // read the ssn of customers
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

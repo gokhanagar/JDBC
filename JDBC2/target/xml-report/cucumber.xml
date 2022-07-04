@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="0.24">
+    <testcase classname="database_read_feature" name="TC01_read_customer_ssn_information" time="0.038">
+        <system-out>
+            <![CDATA[Given user connects to the database.........................................passed
+]]>
+        </system-out>
+    </testcase>
+</testsuite>

@@ -3,9 +3,12 @@ package stepdefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.junit.Assert;
 import utilities.DBUtils;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBStepDefs {
 
@@ -47,12 +50,54 @@ public class DBStepDefs {
             System.out.println(nextColumnData);
 
         }
-
     }
-
 
     @Then("close the database connection")
     public void closeTheDatabaseConnection() {
         DBUtils.closeConnection();
+    }
+
+    @And("verify {string} table {string} column contains {string} data")
+    public void verifyTableColumnContainsData(String table, String column, String data) {
+
+        //1. get the database column data in a list
+       // getColumnData(String query, String column) => returns a list of column data
+        //returns login COLUMN DATA OF jhi_user table
+        //table = jhi_user
+        //column=login
+        //data= scott
+
+        List<Object> allColumnData = DBUtils.getColumnData("select*from "+table+"",column);
+        System.out.println(allColumnData);
+
+        //2. Get the expected data in a list
+        List<Object> expectedData = new ArrayList<Object>();
+        expectedData.add(data); // adding the FF data in the list
+
+        //3. Compare if expected data is in the all column data list
+        Assert.assertTrue(allColumnData.containsAll(expectedData));
+
+        // list a =['apple', 'orange', 'banana']    String b = orange
+        //how do you check if list contains a string? a contains(b)
+
+    }
+
+    @Then("read the row count of {string} table")
+    public void readTheRowCountOfTable(String table) throws Exception {
+
+        int rowCount = DBUtils.getRowCount();
+        System.out.println(table + " row count " + rowCount);
+
+    }
+
+    @Then("read column names of {string}")
+    public void readColumnNamesOf(String table) {
+        //String query = "select * from jhi_user"
+        //writing th query
+        String query = "select * from "+table+"";
+
+        //using the query to get the column names
+        System.out.println(DBUtils.getColumnNames(query));
+
     }
 }

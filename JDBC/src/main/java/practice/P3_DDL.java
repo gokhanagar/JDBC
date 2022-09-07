@@ -22,7 +22,7 @@ public class P3_DDL {
                     -  bu islemlerde islemden etkilenen satir sayisini dondurur.
                     - Ayrıca, DDL islemlerinde de kullanilabilir ve bu islemlerde 0 dondurur.
 
-                  execute() her turlu SQL kjomutuyla kullanilir .......  DDL ---> False    DML----> True
+                  execute() her turlu SQL komutuyla kullanilir .......  DDL ---> False    DML----> True
                   executeUpdate()  DDL ----> 0           DML ----->etkilenen satir sayisini verir
              */
 
